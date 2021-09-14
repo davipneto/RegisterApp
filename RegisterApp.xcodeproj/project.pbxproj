@@ -17,6 +17,7 @@
 		D8BD38E526F145F000A4486B /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38E426F145F000A4486B /* Validators.swift */; };
 		D8BD38E826F149D900A4486B /* ReqressAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38E726F149D900A4486B /* ReqressAPI.swift */; };
 		D8BD38EA26F1538A00A4486B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38E926F1538A00A4486B /* KeychainHelper.swift */; };
+		D8BD38EC26F15BF900A4486B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38EB26F15BF900A4486B /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D8BD38E426F145F000A4486B /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		D8BD38E726F149D900A4486B /* ReqressAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqressAPI.swift; sourceTree = "<group>"; };
 		D8BD38E926F1538A00A4486B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		D8BD38EB26F15BF900A4486B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FA46C5BC3583192CBB13CA8D /* Pods_RegisterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegisterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 				D8BD38D026F1423300A4486B /* AppDelegate.swift */,
 				D8BD38D226F1423300A4486B /* SceneDelegate.swift */,
 				D8BD38D426F1423300A4486B /* LoginViewController.swift */,
+				D8BD38EB26F15BF900A4486B /* RegisterViewController.swift */,
 				D8BD38D626F1423300A4486B /* Main.storyboard */,
 				D8BD38D926F1423500A4486B /* Assets.xcassets */,
 				D8BD38DB26F1423500A4486B /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 			files = (
 				D8BD38E526F145F000A4486B /* Validators.swift in Sources */,
 				D8BD38EA26F1538A00A4486B /* KeychainHelper.swift in Sources */,
+				D8BD38EC26F15BF900A4486B /* RegisterViewController.swift in Sources */,
 				D8BD38D526F1423300A4486B /* LoginViewController.swift in Sources */,
 				D8BD38D126F1423300A4486B /* AppDelegate.swift in Sources */,
 				D8BD38D326F1423300A4486B /* SceneDelegate.swift in Sources */,
