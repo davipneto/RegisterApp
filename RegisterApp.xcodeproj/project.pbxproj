@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		BC5BDE5337D8277287E77850 /* Pods_RegisterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA46C5BC3583192CBB13CA8D /* Pods_RegisterApp.framework */; };
+		D849D66126F299BE009946C9 /* LoginSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66026F299BE009946C9 /* LoginSceneViewController.swift */; };
+		D849D66326F299DD009946C9 /* LoginSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66226F299DD009946C9 /* LoginSceneInteractor.swift */; };
+		D849D66526F299E8009946C9 /* LoginScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66426F299E8009946C9 /* LoginScenePresenter.swift */; };
+		D849D66726F2A0DD009946C9 /* LoginSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66626F2A0DD009946C9 /* LoginSceneRouter.swift */; };
+		D849D66926F2A1E2009946C9 /* LoginSceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66826F2A1E2009946C9 /* LoginSceneConfigurator.swift */; };
+		D849D66C26F2A2C6009946C9 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849D66B26F2A2C6009946C9 /* LoginSceneFactory.swift */; };
 		D8BD38D126F1423300A4486B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38D026F1423300A4486B /* AppDelegate.swift */; };
 		D8BD38D326F1423300A4486B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38D226F1423300A4486B /* SceneDelegate.swift */; };
 		D8BD38D526F1423300A4486B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD38D426F1423300A4486B /* LoginViewController.swift */; };
@@ -24,6 +30,12 @@
 		369EA82D33F78804F75A1EA6 /* Pods-RegisterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterApp.release.xcconfig"; path = "Target Support Files/Pods-RegisterApp/Pods-RegisterApp.release.xcconfig"; sourceTree = "<group>"; };
 		96BDC3AE32108BDE2B881AEC /* Pods-RegisterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterApp.debug.xcconfig"; path = "Target Support Files/Pods-RegisterApp/Pods-RegisterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D849D65E26F29413009946C9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		D849D66026F299BE009946C9 /* LoginSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneViewController.swift; sourceTree = "<group>"; };
+		D849D66226F299DD009946C9 /* LoginSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneInteractor.swift; sourceTree = "<group>"; };
+		D849D66426F299E8009946C9 /* LoginScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScenePresenter.swift; sourceTree = "<group>"; };
+		D849D66626F2A0DD009946C9 /* LoginSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneRouter.swift; sourceTree = "<group>"; };
+		D849D66826F2A1E2009946C9 /* LoginSceneConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneConfigurator.swift; sourceTree = "<group>"; };
+		D849D66B26F2A2C6009946C9 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
 		D8BD38CD26F1423300A4486B /* RegisterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegisterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BD38D026F1423300A4486B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BD38D226F1423300A4486B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +80,26 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D849D65F26F2998B009946C9 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				D849D66026F299BE009946C9 /* LoginSceneViewController.swift */,
+				D849D66226F299DD009946C9 /* LoginSceneInteractor.swift */,
+				D849D66426F299E8009946C9 /* LoginScenePresenter.swift */,
+				D849D66626F2A0DD009946C9 /* LoginSceneRouter.swift */,
+				D849D66826F2A1E2009946C9 /* LoginSceneConfigurator.swift */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		D849D66A26F2A2A7009946C9 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				D849D66B26F2A2C6009946C9 /* LoginSceneFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		D8BD38C426F1423300A4486B = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +121,8 @@
 		D8BD38CF26F1423300A4486B /* RegisterApp */ = {
 			isa = PBXGroup;
 			children = (
+				D849D66A26F2A2A7009946C9 /* Factories */,
+				D849D65F26F2998B009946C9 /* LoginScene */,
 				D8BD38E626F149CA00A4486B /* API */,
 				D8BD38D026F1423300A4486B /* AppDelegate.swift */,
 				D8BD38D226F1423300A4486B /* SceneDelegate.swift */,
@@ -227,13 +261,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D849D66C26F2A2C6009946C9 /* LoginSceneFactory.swift in Sources */,
+				D849D66326F299DD009946C9 /* LoginSceneInteractor.swift in Sources */,
 				D8BD38E526F145F000A4486B /* Validators.swift in Sources */,
 				D8BD38EA26F1538A00A4486B /* KeychainHelper.swift in Sources */,
+				D849D66726F2A0DD009946C9 /* LoginSceneRouter.swift in Sources */,
 				D8BD38EC26F15BF900A4486B /* RegisterViewController.swift in Sources */,
+				D849D66926F2A1E2009946C9 /* LoginSceneConfigurator.swift in Sources */,
 				D8BD38D526F1423300A4486B /* LoginViewController.swift in Sources */,
 				D8BD38D126F1423300A4486B /* AppDelegate.swift in Sources */,
 				D8BD38D326F1423300A4486B /* SceneDelegate.swift in Sources */,
+				D849D66526F299E8009946C9 /* LoginScenePresenter.swift in Sources */,
 				D8BD38E826F149D900A4486B /* ReqressAPI.swift in Sources */,
+				D849D66126F299BE009946C9 /* LoginSceneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
