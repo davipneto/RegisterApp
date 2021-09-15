@@ -1,0 +1,33 @@
+
+/* Class = "UITextField"; placeholder = "Data de Nascimento"; ObjectID = "2D5-2T-RcC"; */
+"2D5-2T-RcC.placeholder" = "Data de Nascimento";
+
+/* Class = "UITextField"; placeholder = "Endereço"; ObjectID = "3Mz-gc-nCw"; */
+"3Mz-gc-nCw.placeholder" = "Endereço";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "DPB-AN-zoI"; */
+"DPB-AN-zoI.placeholder" = "Nome";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Evn-eg-BiT"; */
+"Evn-eg-BiT.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Registrar"; ObjectID = "Mgu-AA-Q3f"; */
+"Mgu-AA-Q3f.normalTitle" = "Registrar";
+
+/* Class = "UITextField"; placeholder = "Telefone"; ObjectID = "WiM-dw-zp4"; */
+"WiM-dw-zp4.placeholder" = "Telefone";
+
+/* Class = "UITextField"; placeholder = "Senha"; ObjectID = "fn6-7L-i9u"; */
+"fn6-7L-i9u.placeholder" = "Senha";
+
+/* Class = "UITextField"; placeholder = "Senha"; ObjectID = "r2d-Z1-jaZ"; */
+"r2d-Z1-jaZ.placeholder" = "Senha";
+
+/* Class = "UIButton"; normalTitle = "Não tem uma conta? Cadastre-se"; ObjectID = "uk5-cr-qle"; */
+"uk5-cr-qle.normalTitle" = "Não tem uma conta? Cadastre-se";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "uxL-OU-GXU"; */
+"uxL-OU-GXU.placeholder" = "E-mail";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "y3b-n3-bOn"; */
+"y3b-n3-bOn.placeholder" = "E-mail";
