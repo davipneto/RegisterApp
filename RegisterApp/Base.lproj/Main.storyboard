@@ -51,7 +51,7 @@
                                 <rect key="frame" x="92" y="816" width="230" height="30"/>
                                 <state key="normal" title="Não tem uma conta? Cadastre-se"/>
                                 <connections>
-                                    <segue destination="YHX-At-AKz" kind="show" id="M8c-hM-E9y"/>
+                                    <action selector="showRegisterScene:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IIq-Tr-Unx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,23 +71,27 @@
                     <connections>
                         <outlet property="emailTextField" destination="uxL-OU-GXU" id="zzS-pJ-lbI"/>
                         <outlet property="loginButton" destination="Evn-eg-BiT" id="fuy-Pv-SoU"/>
+                        <outlet property="logoImageView" destination="6jm-dk-Cgt" id="u8g-2O-rME"/>
                         <outlet property="passwordTextField" destination="r2d-Z1-jaZ" id="fgh-pI-2hK"/>
+                        <outlet property="registerButton" destination="uk5-cr-qle" id="Dk8-YR-Y1T"/>
+                        <outlet property="stackView" destination="9XY-8m-trp" id="ssu-Ef-Nxk"/>
+                        <outlet property="stackViewCenterConstraint" destination="dGZ-SJ-iEg" id="Hy9-0s-Sw9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="78" y="94"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register Scene View Controller-->
         <scene sceneID="e4W-u1-J8L">
             <objects>
-                <viewController id="YHX-At-AKz" customClass="RegisterViewController" customModule="RegisterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerViewController" id="YHX-At-AKz" customClass="RegisterSceneViewController" customModule="RegisterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZj-4c-xuq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7Hd-Hb-iBY">
-                                <rect key="frame" x="50" y="229" width="314" height="384"/>
+                                <rect key="frame" x="50" y="256" width="314" height="384"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-AN-zoI">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
@@ -112,7 +116,7 @@
                                     <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fn6-7L-i9u">
                                         <rect key="frame" x="0.0" y="236" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2D5-2T-RcC">
                                         <rect key="frame" x="0.0" y="295" width="314" height="34"/>
@@ -123,7 +127,7 @@
                                         <rect key="frame" x="0.0" y="354" width="314" height="30"/>
                                         <state key="normal" title="Registrar"/>
                                         <connections>
-                                            <action selector="register" destination="YHX-At-AKz" eventType="touchUpInside" id="Buq-GO-hCy"/>
+                                            <action selector="register" destination="YHX-At-AKz" eventType="touchUpInside" id="3hI-YI-G39"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -139,18 +143,36 @@
                     </view>
                     <navigationItem key="navigationItem" id="yG2-Xy-zZR"/>
                     <connections>
-                        <outlet property="dateOfBirthTextField" destination="2D5-2T-RcC" id="jvU-iJ-Fc7"/>
-                        <outletCollection property="textFields" destination="DPB-AN-zoI" collectionClass="NSMutableArray" id="DeM-ye-FM0"/>
-                        <outletCollection property="textFields" destination="y3b-n3-bOn" collectionClass="NSMutableArray" id="2QL-Pb-xpr"/>
-                        <outletCollection property="textFields" destination="WiM-dw-zp4" collectionClass="NSMutableArray" id="3qK-T6-bXd"/>
-                        <outletCollection property="textFields" destination="3Mz-gc-nCw" collectionClass="NSMutableArray" id="bXn-0M-aLl"/>
-                        <outletCollection property="textFields" destination="fn6-7L-i9u" collectionClass="NSMutableArray" id="kQe-Q0-wrK"/>
-                        <outletCollection property="textFields" destination="2D5-2T-RcC" collectionClass="NSMutableArray" id="zYE-h5-ZY1"/>
+                        <outlet property="dateTextField" destination="2D5-2T-RcC" id="F8g-hk-K1n"/>
+                        <outletCollection property="textFields" destination="DPB-AN-zoI" collectionClass="NSMutableArray" id="WOr-l2-6uf"/>
+                        <outletCollection property="textFields" destination="y3b-n3-bOn" collectionClass="NSMutableArray" id="WCA-dj-kH1"/>
+                        <outletCollection property="textFields" destination="WiM-dw-zp4" collectionClass="NSMutableArray" id="gIv-jM-jhm"/>
+                        <outletCollection property="textFields" destination="3Mz-gc-nCw" collectionClass="NSMutableArray" id="6w8-GO-S8J"/>
+                        <outletCollection property="textFields" destination="fn6-7L-i9u" collectionClass="NSMutableArray" id="9jO-g0-ais"/>
+                        <outletCollection property="textFields" destination="2D5-2T-RcC" collectionClass="NSMutableArray" id="gL2-xj-rKv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDT-EJ-2Ux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="863" y="111"/>
+        </scene>
+        <!--Resources Scene View Controller-->
+        <scene sceneID="MZb-pX-IRh">
+            <objects>
+                <tableViewController storyboardIdentifier="resourcesViewController" modalPresentationStyle="fullScreen" id="RGV-Cl-TLB" customClass="ResourcesSceneViewController" customModule="RegisterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KeJ-OR-dAg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="RGV-Cl-TLB" id="Y6i-CW-aty"/>
+                            <outlet property="delegate" destination="RGV-Cl-TLB" id="8C4-Dx-pD7"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeB-TB-J7r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1711" y="108"/>
         </scene>
     </scenes>
     <resources>

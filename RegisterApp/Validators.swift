@@ -49,6 +49,14 @@ class Validators {
     func validateName(_ name: String) -> Bool {
         return !name.isEmpty
     }
+    
+    func getEmail() -> String {
+        return textFields[.email]!.text!
+    }
+    
+    func getPassword() -> String {
+        return textFields[.password]!.text!
+    }
 }
 
 class EmailValidator {

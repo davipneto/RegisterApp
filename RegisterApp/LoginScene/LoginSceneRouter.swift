@@ -10,22 +10,27 @@ import UIKit
 protocol LoginSceneRoutingLogic {
     func showLoginError(errorDescription: String)
     func showLoginSucceed()
+    func showRegisterScene()
 }
 
 class LoginSceneRouter: LoginSceneRoutingLogic {
     weak var source: UIViewController?
     
     func showLoginError(errorDescription: String) {
-        let alertController = UIAlertController(title: "Erro", message: errorDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        source?.present(alertController, animated: true, completion: nil)
+        source?.showAlert(title: "Erro", message: errorDescription)
     }
     
     func showLoginSucceed() {
-        let alertController = UIAlertController(title: "Sucesso", message: "O Login foi realizado com sucesso", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        source?.present(alertController, animated: true, completion: nil)
+        let resourcesFactory = ResourcesSceneFactory()
+        resourcesFactory.configurator = ResourcesSceneConfigurator(sceneFactory: resourcesFactory)
+        let vc = resourcesFactory.makeResourcesScene()
+        source?.present(vc, animated: true, completion: nil)
+    }
+    
+    func showRegisterScene() {
+        let registerSceneFactory = RegisterSceneFactory()
+        registerSceneFactory.configurator = RegisterSceneConfigurator(sceneFactory: registerSceneFactory)
+        let registerViewController = registerSceneFactory.makeRegisterScene()
+        source?.present(registerViewController, animated: true, completion: nil)
     }
 }

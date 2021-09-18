@@ -23,6 +23,10 @@ class LoginSceneViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var stackViewCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     // MARK: - Variables
     var interactor: LoginSceneViewControllerOutput?
@@ -32,6 +36,7 @@ class LoginSceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        createObjCModel()
     }
 
     // MARK: - IBActions
@@ -51,16 +56,36 @@ class LoginSceneViewController: UIViewController {
         interactor?.validateFields(email: email, pass: pass)
     }
     
+    @IBAction func showRegisterScene(_ sender: Any) {
+        router?.showRegisterScene()
+    }
+    
     // MARK: - Setup UI
     private func setupUI() {
         loginButton.isEnabled = false
+    }
+    
+    private func createObjCModel() {
+        guard let model = ObjCModel(message: "Mensagem Teste") else { return }
+        model.printMessage()
     }
 }
 
 // MARK: - View Controller Input
 extension LoginSceneViewController: LoginSceneViewControllerInput {
     func showLoginSucceed() {
-        router?.showLoginSucceed()
+        let screenHeight = view.frame.height
+        let stackViewHeight = stackView.frame.height
+        
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseIn) {
+            self.stackViewCenterConstraint.constant = (screenHeight + stackViewHeight) / 2
+            self.logoImageView.alpha = 0
+            self.registerButton.alpha = 0
+            self.stackView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { [weak self] _ in
+            self?.router?.showLoginSucceed()
+        }
     }
     
     func showLoginError(errorMessage: String) {
