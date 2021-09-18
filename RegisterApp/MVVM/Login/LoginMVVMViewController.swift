@@ -1,24 +1,18 @@
 //
-//  LoginSceneViewController.swift
+//  LoginMVVMViewController.swift
 //  RegisterApp
 //
-//  Created by Curitiba01 on 15/09/21.
+//  Created by Curitiba01 on 18/09/21.
 //
 
 import UIKit
+import RxSwift
 
-protocol LoginSceneViewControllerInput: AnyObject {
-    func shouldEnableLoginButton(_ isEnabled: Bool)
-    func showLoginError(errorMessage: String)
-    func showLoginSucceed()
-}
+class LoginMVVMViewController: UIViewController {
+    // MARK: - Variables
+    var viewModel = LoginViewModel()
+    let disposeBag = DisposeBag()
 
-protocol LoginSceneViewControllerOutput {
-    func login(email: String, pass: String)
-    func validateFields(email: String, pass: String)
-}
-
-class LoginSceneViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,16 +21,11 @@ class LoginSceneViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
-    
-    // MARK: - Variables
-    var interactor: LoginSceneViewControllerOutput?
-    var router: LoginSceneRoutingLogic?
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        createObjCModel()
+        bindUI()
     }
 
     // MARK: - IBActions
@@ -45,7 +34,14 @@ class LoginSceneViewController: UIViewController {
               let pass = passwordTextField.text
         else { return }
         
-        interactor?.login(email: email, pass: pass)
+        viewModel.login(email: email, pass: pass)
+            .observeOn(MainScheduler.instance)
+            .subscribe { [weak self] token in
+                self?.didLoginSucceed()
+            } onError: { [weak self] error in
+                self?.showAlert(title: "Erro", message: error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
     }
     
     @IBAction func editingChanged() {
@@ -53,27 +49,21 @@ class LoginSceneViewController: UIViewController {
               let pass = passwordTextField.text
         else { return }
         
-        interactor?.validateFields(email: email, pass: pass)
+        viewModel.validateFields(email: email, pass: pass)
     }
     
     @IBAction func showRegisterScene(_ sender: Any) {
-        router?.showRegisterScene()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "registerViewController")
+        present(vc, animated: true, completion: nil)
     }
-    
-    // MARK: - Setup UI
-    private func setupUI() {
-        loginButton.isEnabled = false
-    }
-    
-    private func createObjCModel() {
-        guard let model = ObjCModel(message: "Mensagem Teste") else { return }
-        model.printMessage()
-    }
-}
 
-// MARK: - View Controller Input
-extension LoginSceneViewController: LoginSceneViewControllerInput {
-    func showLoginSucceed() {
+    private func bindUI() {
+        viewModel.areFieldsValid.bind(to: loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
+    
+    private func didLoginSucceed() {
         let screenHeight = view.frame.height
         let stackViewHeight = stackView.frame.height
         
@@ -84,15 +74,9 @@ extension LoginSceneViewController: LoginSceneViewControllerInput {
             self.stackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { [weak self] _ in
-            self?.router?.showLoginSucceed()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "resourcesViewController")
+            self?.present(vc, animated: true, completion: nil)
         }
-    }
-    
-    func showLoginError(errorMessage: String) {
-        router?.showLoginError(errorDescription: errorMessage)
-    }
-    
-    func shouldEnableLoginButton(_ isEnabled: Bool) {
-        loginButton.isEnabled = isEnabled
     }
 }

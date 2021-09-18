@@ -1,10 +1,11 @@
 //
-//  RegisterSceneModel.swift
+//  RegisterResponse.swift
 //  RegisterApp
 //
-//  Created by Curitiba01 on 17/09/21.
+//  Created by Curitiba01 on 18/09/21.
 //
 
+import Foundation
 import SwiftyJSON
 
 struct RegisterResponse {

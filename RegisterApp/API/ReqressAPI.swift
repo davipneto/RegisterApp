@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RxSwift
 
 enum LoginError: Error {
     case invalidData
@@ -20,82 +21,55 @@ class ReqressAPI {
     
     private let baseURL = "https://reqres.in/api"
     
-    func register(email: String, password: String, completion: @escaping (_ response: RegisterResponse?, _ error: Error?) -> Void) {
+    func register(email: String, password: String) -> Observable<RegisterResponse> {
         let url = baseURL + "/register"
         let parameters: [String: Any] = [
             "email": email,
             "password": password
         ]
         
-        AF.request(url, method: .post, parameters: parameters).responseData { responseData in
-            if let error = responseData.error {
-                completion(nil, error)
-                return
-            }
-            guard let data = responseData.data else {
-                completion(nil, LoginError.invalidData)
-                return
-            }
-            do {
-                let json = try JSON(data: data)
-                print(json)
-                let response = RegisterResponse(json: json)
-                completion(response, nil)
-            } catch {
-                completion(nil, error)
-            }
-        }
+        return createRequest(url: url, method: .post, parameters: parameters)
+            .map { RegisterResponse(json: $0) }
     }
     
-    func login(email: String, password: String, completion: @escaping (_ token: String?, _ error: Error?) -> Void) {
+    func login(email: String, password: String) -> Observable<String> {
         let url = baseURL + "/login"
         let parameters: [String: Any] = [
             "email": email,
             "password": password
         ]
         
-        AF.request(url, method: .post, parameters: parameters).responseData { responseData in
-            if let error = responseData.error {
-                completion(nil, error)
-                return
-            }
-            guard let data = responseData.data else {
-                completion(nil, LoginError.invalidData)
-                return
-            }
-            do {
-                let json = try JSON(data: data)
-                print(json)
-                guard let token = json["token"].string else {
-                    let jsonError = json["error"].stringValue
-                    completion(nil, LoginError.other(message: jsonError))
-                    return
-                }
-                completion(token, nil)
-            } catch {
-                completion(nil, error)
-            }
-        }
+        return createRequest(url: url, method: .post, parameters: parameters)
+            .map { $0["token"].stringValue }
     }
     
-    func getResources(completion: @escaping (_ response: [Resource]?, _ error: Error?) -> Void) {
+    func getResources() -> Observable<[Resource]> {
         let url = baseURL + "/unknown"
-        AF.request(url, method: .get).responseData { responseData in
-            if let error = responseData.error {
-                completion(nil, error)
-                return
+        return createRequest(url: url)
+            .map {
+                $0["data"].arrayValue.map { Resource(json: $0) }
             }
-            guard let data = responseData.data else {
-                completion(nil, LoginError.invalidData)
-                return
+    }
+    
+    private func createRequest(url: String, method: HTTPMethod = .get, parameters: [String: Any]? = nil) -> Observable<JSON> {
+        return Observable.create { observer -> Disposable in
+            let request = Alamofire.Session.default.request(url, method: method, parameters: parameters).responseData { responseData in
+                if let error = responseData.error {
+                    observer.onError(error)
+                    return
+                }
+                if let data = responseData.data {
+                    do {
+                        let json = try JSON(data: data)
+                        observer.onNext(json)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(LoginError.invalidData)
+                    }
+                }
             }
-            do {
-                let json = try JSON(data: data)
-                print(json)
-                let resources = json["data"].arrayValue.map { Resource(json: $0) }
-                completion(resources, nil)
-            } catch {
-                completion(nil, error)
+            return Disposables.create {
+                request.cancel()
             }
         }
     }

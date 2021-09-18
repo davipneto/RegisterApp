@@ -8,5 +8,7 @@ target 'RegisterApp' do
   # Pods for RegisterApp
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'RxSwift'
+pod 'RxCocoa'
 
 end

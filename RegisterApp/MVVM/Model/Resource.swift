@@ -2,7 +2,7 @@
 //  Resource.swift
 //  RegisterApp
 //
-//  Created by Curitiba01 on 17/09/21.
+//  Created by Curitiba01 on 18/09/21.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ struct Resource {
         id = json["id"].intValue
         name = json["name"].stringValue
         year = json["year"].intValue
-        pantoneValue = json["pantone_value"].stringValue
         color = UIColor(rgbHexString: json["color"].stringValue)
+        pantoneValue = json["pantone_value"].stringValue
     }
 }
